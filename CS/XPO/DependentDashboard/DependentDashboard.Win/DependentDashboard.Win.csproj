@@ -40,4 +40,9 @@
   <ItemGroup>
     <ProjectReference Include="..\DependentDashboard.Module\DependentDashboard.Module.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PGK.Extensions">
+      <HintPath>..\..\..\lib\PGK.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

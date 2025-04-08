@@ -16,51 +16,68 @@ using System.Diagnostics;
 using DevExpress.Persistent.Base.General;
 using DevExpress.ExpressApp.SystemModule;
 
-namespace dxTestSolution.Module.BusinessObjects {
-     [DefaultClassOptions]
+namespace dxTestSolution.Module.BusinessObjects; 
+ [DefaultClassOptions]
 	  
-    public class Contact : BaseObject { 
-        public Contact(Session session)
-            : base(session) {
+public class Contact : BaseObject { 
+    public Contact(Session session)
+        : base(session) {
+    }
+    public override void AfterConstruction() {
+        base.AfterConstruction();
+    }
+    string _companyName;
+    string _firstName;
+    public string FirstName
+    {
+        get
+        {
+            return _firstName;
         }
-        public override void AfterConstruction() {
-            base.AfterConstruction();
+        set
+        {
+            SetPropertyValue(nameof(FirstName), ref _firstName, value);
         }
-        string _firstName;
-        public string FirstName {
-            get {
-                return _firstName;
-            }
-            set {
-                SetPropertyValue(nameof(FirstName), ref _firstName, value);
-            }
+    }
+    string _lastName;
+    public string LastName
+    {
+        get
+        {
+            return _lastName;
         }
-        string _lastName;
-        public string LastName {
-            get {
-                return _lastName;
-            }
-            set {
-                SetPropertyValue(nameof(LastName), ref _lastName, value);
-            }
+        set
+        {
+            SetPropertyValue(nameof(LastName), ref _lastName, value);
         }
-		int _age;
-        public int Age {
-            get {
-                return _age;
-            }
-            set {
-                SetPropertyValue(nameof(Age), ref _age, value);
-            }
+    }
+    int _age;
+    public int Age
+    {
+        get
+        {
+            return _age;
         }
-	
-        [Association("Contact-Tasks")]
-        public XPCollection<MyTask> Tasks {
-            get {
-                return GetCollection<MyTask>(nameof(Tasks));
-            }
+        set
+        {
+            SetPropertyValue(nameof(Age), ref _age, value);
         }
+    }
+
+    
+    [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+    public string CompanyName
+    {
+        get => _companyName;
+        set => SetPropertyValue(nameof(CompanyName), ref _companyName, value);
+    }
+
+    [Association("Contact-Tasks")]
+    public XPCollection<MyTask> Tasks {
+        get {
+            return GetCollection<MyTask>(nameof(Tasks));
+        }
+    }
 		
 
-    }
 }

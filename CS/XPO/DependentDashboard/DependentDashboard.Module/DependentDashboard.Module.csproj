@@ -23,4 +23,9 @@
     <PackageReference Include="DevExpress.Persistent.Base" Version="24.2.6" />
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="24.2.6" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PGK.Extensions">
+      <HintPath>..\..\..\lib\PGK.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
